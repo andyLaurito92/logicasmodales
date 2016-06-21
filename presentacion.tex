@@ -1,0 +1,295 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[L\'ogica Epistemol\'ogica]{L\'ogica Epistemol\'ogica} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Andr\'es Laurito} % Your name
+\institute[L\'ogicas Modales] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Primer cuatrimestre 2016 \\ % Your institution for the title page
+\medskip
+\textit{andy.laurito@hotmail.com} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Lo que vamos a ver} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Introducci\'on al problema} 
+%------------------------------------------------
+
+\subsection{Los papers}
+
+\begin{frame}
+\frametitle{¿Qu\'e papers eleg\'i para presentar?}
+\begin{enumerate}
+\item On the Complexity of Epistemic Reasoning
+\item Which Semantics for Neighbourhood Semantics?
+\end{enumerate}
+
+\begin{block}{Idea de hac\'ia donde vamos}
+Tratan el problema de la l\'ogica epist\'emica con dos enfoques distintos. En uno nos enfocamos en la complejidad computacional de SAT para la l\'ogica modal, mientras que en el otro se trata de dar un nuevo enfoque sobre el mismo problema.
+\end{block}
+
+
+\end{frame}
+
+\subsection{¿Que \'es?}
+
+\begin{frame}
+\frametitle{¿Qu\'e es la l\'ogica epist\'emica?}
+\begin{block}{Wikipedia}
+La l\'ogica epist\'emica es un campo de la l\'ogica modal que se ocupa del razonamiento sobre el conocimiento. Est\'a tiene aplicaciones en numerosos campos, tales como filosof\'ia, ciencia computacional te\'orica, inteligencia artificial, econom\'ia y lingu\'istica.
+\end{block}
+
+\begin{block}{Stanford Enciclopedy of Phylosophy}
+Epistemic logic is the logic of knowledge and belief. It provides insight into the properties of individual knowers, has provided a means to model complicated scenarios involving groups of knowers and has improved our understanding of the dynamics of inquiry. 
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{¿Qu\'e es la l\'ogica epistemologica?}
+\begin{block}{Mi definici\'on}
+Es la l\'ogica de la representaci\'on del conocimiento y las creencias de un individuo (en I.A. un agente). 
+A partir de la extensi\'on de la l\'ogica proposicional con operadores modales, podemos modelar de manera formal el poseer conocimientos y adquirirlos (en donde adquirir puede ser visto como una forma de razonamiento del individuo).
+\end{block}
+
+Super relacionada con Belief Revision (me parece bastante vol\'atil el fin de una y el comienzo de otra).
+\end{frame}
+
+\section{El problema}
+
+\subsection{Definiendo la sem\'antica}
+
+\begin{frame}
+\frametitle{Introduciendo a los nuevos operadores}
+En las l\'ogicas epist\'emicas existen dos operadores modales. Si a representa un agente, escribimos:
+\begin{itemize}
+\item a conoce una f\'ormula $\phi$ como $K_{a}\phi$ 
+\item a cree una f\'ormula $\phi$ como $B_{a}\phi$ 
+\end{itemize}
+
+Para el problema que vamos a atacar, es indistinto el operador. En todo lo que sigue de la presentaci\'on , voy a usar el primer operador y lo voy a notar con la notaci\'on utilizada en toda la materia, pero debe etenderser que es indistinto usar cualquiera de los dos. \\~\\
+
+Queremos modelar a la epistemolog\'ia, tenemos la sintaxis,\\
+los operadores ... ¿Qu\'e modelo sem\'antico usamos?
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Usando el modelo de Kripke}
+Nos encontramos con un problema conocido como el " logical omniscience problem". Citando el lema de la diapo 19 de la tercera clase de la materia: 
+\begin{block}{Lema}
+Si $\phi$ y ($\phi \implies \psi$) son v\'alidas en un modelo, tambi\'en lo es $\psi$.
+\end{block}
+
+Y recordando que K tiene la regla de necesitaci\'on que dice:
+\begin{block}{Necesitaci\'on}
+Si $\phi$ es v\'alida en un modelo, entonces tambi\'en lo es $\Box\phi$ .
+\end{block}
+Llegamos a que la l\'ogica modal K es muy fuerte para modelar conocimiento y creencia!.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Neighbourhood al rescate!}
+Vamos a definir a una estructura epist\'emica, (los famosos modelos de vecindad con otro sabor), como una tripla $M = (W,N,I)$ en donde, si A es un conjunto de agentes, y a $\in$ A entonces: \\~\\
+\begin{itemize}
+\item $W$ es un conjunto de mundos
+\item $N: A x W \mapsto 2^{2^{W}}$ es la funci\'on que asigna a cada agente en un mundo, el correspondiente conjunto de proposiciones que conoce (es decir, un conjunto epist\'emico).
+\item $I: P \mapsto 2^{W}$ es la funci\'on que asigna a cada proposici\'on at\'omica, el conjunto de mundos en donde dicha proposici\'on es satisfecha.
+\end{itemize}
+
+La definici\'on de satisfacci\'on de una f\'ormula ser\'a la misma que vimos en la materia.
+\end{frame}
+
+\begin{frame}
+\frametitle{Problema con Neighbourhood}
+
+Si bien con el modelo definido reci\'en, solucionamos el problema de logical omniscience, nos surge un nuevo problema. Citando la diapo 6 de la tecera clase: 
+
+\begin{block}{Teorema}
+Si $\phi \iff \psi$ es v\'alida en una clase de modelos de vecindad, entonces en dicha clase tambi\'en lo es $\Box\phi \iff \Box\psi$ .
+\end{block} 
+
+Nos vamos a permitir vivir con este problema
+
+\end{frame}
+
+\subsection{Modelando la noci\'on de poder de razonamiento}
+\begin{frame}
+\frametitle{El razonamiento como f\'ormulas}
+\begin{enumerate}
+\item $\neg \Box false$
+\item $\Box true$
+\item $\Box(p \land q)\implies \Box q$
+\item $(\Box p \land \Box q)\implies \Box (p \land q)$
+\item $\Box p \implies \Box\Box p$
+\item $\neg \Box p \implies \Box \neg \Box p$
+\item $\Box p \implies p$
+\end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Theorem}
+\begin{theorem}[Mass--energy equivalence]
+$E = mc^2$
+\end{theorem}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{Verbatim}
+\begin{example}[Theorem Slide Code]
+\begin{verbatim}
+\begin{frame}
+\frametitle{Theorem}
+\begin{theorem}[Mass--energy equivalence]
+$E = mc^2$
+\end{theorem}
+\end{frame}\end{verbatim}
+\end{example}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Figure}
+Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+%\begin{figure}
+%\includegraphics[width=0.8\linewidth]{test}
+%\end{figure}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{Citation}
+An example of the \verb|\cite| command to cite within the presentation:\\~
+
+This statement requires citation \cite{p1}.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{References}
+\footnotesize{
+\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+\bibitem[Smith, 2012]{p1} John Smith (2012)
+\newblock Title of the publication
+\newblock \emph{Journal Name} 12(3), 45 -- 678.
+\end{thebibliography}
+}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Preguntas??}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introducci\'on al problema}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Los papers}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{¿Que \'es?}{4}{0}{1}
+\beamer@sectionintoc {2}{El problema}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Definiendo la sem\'antica}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Modelando la noci\'on de poder de razonamiento}{10}{0}{2}
