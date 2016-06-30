@@ -271,57 +271,29 @@ El paper de "On the Complexity of Epistemic Reasoning" demuestra este teorema (t
 El objetivo para demostrar el teorema anterior viene por este lado
 
 \begin{block}{La idea}
-Sea M uno de los modelos epist\'emicos $\epsilon_{i}$ con $i \in S$, $\phi$ una f\'ormula tal que $\epsilon_{i} \models \phi$. La idea ser\'a probar que siempre que $i \neq 4$ existe una valuaci\'on v para $\phi$ tal que las subformul\'as con operadores modales en $\phi$ son satisfacibles, si $\sigma$ es satisfacible, con $\sigma$ una f\'ormula perteneciente al calc\'ulo proposicional.
+Sea M uno de los modelos epist\'emicos $\epsilon_{i}$ con $i \in S$, $\phi$ una f\'ormula tal que $\epsilon_{i} \models \phi$. La idea ser\'a probar que siempre que $i \neq 4$ existe una valuaci\'on v para $\phi$ tal que las subformul\'as con operadores modales en $\phi$ son satisfacibles, si $\psi$ es satisfacible, con $\psi$ una f\'ormula perteneciente al calc\'ulo proposicional.
 \end{block}
 
 Con esto podemos aplicar el algoritmo de tableau de una manera m\'as eficiente. Adem\'as, al dar propiedades de est\'a pinta, nos podemos construir un algoritmo no determin\'istico de tiempo polinomial.
+
+Veamos un par de ejemplos de est\'a idea que comente
 \end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-%------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
+\frametitle{Ejemplos}
 
-%------------------------------------------------
+\begin{block}{Proposici\'on 1}
+Una f\'ormula $\phi$ es $\epsilon$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que si $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box \psi_{2}) = 0 \implies (\psi_{1} \land \psi_{2}) \lor (\neg \psi_{1} \land \psi_{2})$ es $\epsilon$-satisfacible
+\end{block}
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
+\begin{block}{Proposici\'on 2}
+Una f\'ormula $\phi$ es $\epsilon_{2}$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que: 
+\begin{itemize}
+\item Si $\Box\psi \in sub(\phi)$ y  $sv(\Box \psi) = 0 \implies \neg \psi$ es $\epsilon_{2}-$satisfacible, y 
+\item $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box \psi_{2}) = 0 \implies (\psi_{1} \land \psi_{2}) \lor (\neg \psi_{1} \land \psi_{2})$ es $\epsilon_{2}$-satisfacible
+\end{itemize}
+\end{block}
 
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
 \end{frame}
 
 %------------------------------------------------
