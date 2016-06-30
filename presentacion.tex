@@ -83,7 +83,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[L\'ogica Epistemol\'ogica]{L\'ogica Epistemol\'ogica} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[L\'ogica Epist\'emica]{L\'ogica Epist\'emica} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Andr\'es Laurito} % Your name
 \institute[L\'ogicas Modales] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -129,7 +129,7 @@ Tratan el problema de la l\'ogica epist\'emica con dos enfoques distintos. En un
 
 \end{frame}
 
-\subsection{¿Que \'es?}
+\subsection{L\'ogica epist\'emica}
 
 \begin{frame}
 \frametitle{¿Qu\'e es la l\'ogica epist\'emica?}
@@ -144,7 +144,7 @@ Epistemic logic is the logic of knowledge and belief. It provides insight into t
 \end{frame}
 
 \begin{frame}
-\frametitle{¿Qu\'e es la l\'ogica epistemologica?}
+\frametitle{¿Qu\'e es la l\'ogica epist\'emica?}
 \begin{block}{Mi definici\'on}
 Es la l\'ogica de la representaci\'on del conocimiento y las creencias de un individuo (en I.A. un agente). 
 A partir de la extensi\'on de la l\'ogica proposicional con operadores modales, podemos modelar de manera formal el poseer conocimientos y adquirirlos (en donde adquirir puede ser visto como una forma de razonamiento del individuo).
@@ -153,7 +153,7 @@ A partir de la extensi\'on de la l\'ogica proposicional con operadores modales, 
 Super relacionada con Belief Revision (me parece bastante vol\'atil el fin de una y el comienzo de otra).
 \end{frame}
 
-\section{El problema}
+\section{El problema - Parte 1}
 
 \subsection{Definiendo la sem\'antica}
 
@@ -175,7 +175,7 @@ los operadores ... ¿Qu\'e modelo sem\'antico usamos?
 
 \begin{frame}
 \frametitle{Usando el modelo de Kripke}
-Nos encontramos con un problema conocido como el " logical omniscience problem". Citando el lema de la diapo 19 de la tercera clase de la materia: 
+Nos encontramos con un problema conocido como el "logical omniscience problem". Sabemos que: 
 \begin{block}{Lema}
 Si $\phi$ y ($\phi \implies \psi$) son v\'alidas en un modelo, tambi\'en lo es $\psi$.
 \end{block}
@@ -198,7 +198,7 @@ Vamos a definir a una estructura epist\'emica, (los famosos modelos de vecindad 
 \item $I: P \mapsto 2^{W}$ es la funci\'on que asigna a cada proposici\'on at\'omica, el conjunto de mundos en donde dicha proposici\'on es satisfecha.
 \end{itemize}
 
-La definici\'on de satisfacci\'on de una f\'ormula ser\'a la misma que vimos en la materia.
+La definici\'on de satisfacibilidad de una f\'ormula ser\'a la misma que vimos en la materia.
 \end{frame}
 
 \begin{frame}
@@ -228,13 +228,53 @@ Nos vamos a permitir vivir con este problema
 \end{enumerate}
 \end{frame}
 
-%------------------------------------------------
+\begin{frame}
+\frametitle{El razonamiento modelado sobre conjuntos epist\'emicos!}
+\begin{enumerate}
+\item $\emptyset \notin N(a,w)$
+\item $W \in N(a,w)$
+\item Si $U \in N(a,w)$ y $U \subseteq V, \implies V \in N(a,w)$
+\item Si $U \in N(a,w)$ y $V \in N(a,w) \implies (U \cap V) \in N(a,w)$
+\item Si $U \in N(a,w) \implies \{u : U \in N(a,u)\} \in N(a,w)$
+\item Si $U \notin N(a,w) \implies \{u : U \notin N(a,u)\} \in N(a,w)$
+\item Si $U \in N(a,w) \implies w \in U$
+\end{enumerate}
+
+A partir de est\'a definici\'on, si llamamos $\epsilon$ a la clase de todos los modelos epist\'emicos, entonces podemos decir:
+
+\begin{block}{Definici\'on}
+Sea S un subconjunto de {1,...,7}, entonces $\epsilon_{S}$ ser\'a la clase de los modelos epist\'emicos que satisfaga $C_{j}$ $\forall j \in S$
+\end{block} 
+\end{frame}
+
+\subsection{Estudiando la complejidad computacional}
 
 \begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
+\frametitle{Complejidad computacional de cada modelo ?}
+
+Sabemos que una f\'ormula $\phi$ es $\epsilon_{S}$-satisfacible si $\exists w \in W$ tal que $\epsilon_{S} \models_{w} \phi$. C\'ual ser\'a la relaci\'on, si es que la hay, entre S y la complejidad computacional de satisfacer una f\'ormula?
+\end{frame}
+
+\begin{frame}
+\frametitle{EL problema a resolver en este paper}
+
+\begin{block}{EL Teorema}
+ Si S es un subconjunto de {1, ..., 7} entonces resolver SAT est\'a en PSPACE. Ahora, si S es un subconjunto de {1, ..., 7} y $4 \notin S$, entonces SAT est\'a en NP
+\end{block}
+
+El paper de "On the Complexity of Epistemic Reasoning" demuestra este teorema (todo el paper est\'a enfocado en esto).
+\end{frame}
+
+\begin{frame}
+\frametitle{La idea para resolver el problema}
+
+El objetivo para demostrar el teorema anterior viene por este lado
+
+\begin{block}{La idea}
+Sea M uno de los modelos epist\'emicos $\epsilon_{i}$ con $i \in S$, $\phi$ una f\'ormula tal que $\epsilon_{i} \models \phi$. La idea ser\'a probar que siempre que $i \neq 4$ existe una valuaci\'on v para $\phi$ tal que las subformul\'as con operadores modales en $\phi$ son satisfacibles, si $\sigma$ es satisfacible, con $\sigma$ una f\'ormula perteneciente al calc\'ulo proposicional.
+\end{block}
+
+Con esto podemos aplicar el algoritmo de tableau de una manera m\'as eficiente. Adem\'as, al dar propiedades de est\'a pinta, nos podemos construir un algoritmo no determin\'istico de tiempo polinomial.
 \end{frame}
 
 %------------------------------------------------
