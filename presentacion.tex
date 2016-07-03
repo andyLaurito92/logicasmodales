@@ -80,6 +80,8 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{algorithm,algorithmic}
+\usepackage{graphicx}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -477,7 +479,7 @@ El problema con este nuevo operador, es que es alto galerazo. No habr\'a algo m\
 \begin{frame}
 \frametitle{El operador modal de existencia}
 
-Definimos al operador modal de existencia, E como sigue:
+Definimos al operador modal de existencia E como sigue:
 
 \begin{block}{Definici\'on operador modal de existencia}
 \[ ||E\phi|| = \begin{cases} 
@@ -505,9 +507,19 @@ Surge la siguiente pregunta... Habremos modificado la complejidad computacional,
 $\forall \phi$ y $\forall$ M modelo epist\'emico, $||\phi||_{\subseteq}^{M} = ||\phi||_{=}^{M^{+}}$ 
 \end{block}
 
+Usando esto y lo visto en la primera parte, podemos probar entonces que
 \begin{block}{Proposici\'on}
 El problema de satisfacibilidad de $N_{\subseteq}$ es NP
 \end{block}
+
+Falta ver que $N_{=}(E)$ sigue estando en NP-completo. Para ver esto, primero demos el algoritmo
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Algoritmo satisfaciblidad $N_{=}(E)$}
+
+\includegraphics[height=\textheight]{satalgorithm.JPG}
 
 \end{frame}
 
