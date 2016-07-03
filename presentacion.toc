@@ -6,3 +6,6 @@
 \beamer@subsectionintoc {2}{1}{Definiendo la sem\'antica}{6}{0}{2}
 \beamer@subsectionintoc {2}{2}{Modelando la noci\'on de poder de razonamiento}{10}{0}{2}
 \beamer@subsectionintoc {2}{3}{Estudiando la complejidad computacional}{12}{0}{2}
+\beamer@sectionintoc {3}{El problema - Parte 2}{18}{0}{3}
+\beamer@subsectionintoc {3}{1}{Redefiniendo la sem\'antica}{18}{0}{3}
+\beamer@subsectionintoc {3}{2}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{20}{0}{3}

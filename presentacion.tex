@@ -78,6 +78,7 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{listings}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -123,7 +124,7 @@ Primer cuatrimestre 2016 \\ % Your institution for the title page
 \end{enumerate}
 
 \begin{block}{Idea de hac\'ia donde vamos}
-Tratan el problema de la l\'ogica epist\'emica con dos enfoques distintos. En uno nos enfocamos en la complejidad computacional de SAT para la l\'ogica modal, mientras que en el otro se trata de dar un nuevo enfoque sobre el mismo problema.
+Tratan el problema de la l\'ogica epist\'emica. En el primero nos vamos a enfocar en la complejidad computacional de SAT para la l\'ogica epist\'emica, mientras que en el otro vamos a usar est\'e estudio, para definir la complejidad computacional de la bisimulaci\'on en 2 modelos sem\'anticos de Neighbourhood.
 \end{block}
 
 
@@ -276,23 +277,115 @@ Sea M uno de los modelos epist\'emicos $\epsilon_{i}$ con $i \in S$, $\phi$ una 
 
 Con esto podemos aplicar el algoritmo de tableau de una manera m\'as eficiente. Adem\'as, al dar propiedades de est\'a pinta, nos podemos construir un algoritmo no determin\'istico de tiempo polinomial.
 
-Veamos un par de ejemplos de est\'a idea que comente
+Veamos la propiedad enunciada m\'as importante del paper:
 \end{frame}
 
 \begin{frame}
-\frametitle{Ejemplos}
+\frametitle{SAT de una f\'ormula}
 
 \begin{block}{Proposici\'on 1}
 Una f\'ormula $\phi$ es $\epsilon$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que si $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box \psi_{2}) = 0 \implies (\psi_{1} \land \psi_{2}) \lor (\neg \psi_{1} \land \psi_{2})$ es $\epsilon$-satisfacible
 \end{block}
 
+A partir de est\'a propiedad, podemos inferir el siguiente algoritmo:
+
+\begin{block}{Algoritmo SAT para $\epsilon$}
+\begin{itemize}
+	\item De manera no determinist\'isca adivinar una valuaci\'on v para $\phi$
+	\item $\forall \Box\psi_{1} \land \Box\psi_{2} \in sub(\phi)$ / $v(\Box\psi_{1}) = 1 \land \Box\psi_{2} = 0$ no determin\'isticamente y de manera recursiva, verificar que $(\psi_{1} \land \neg\psi_{2} \lor (\neg\psi_{1}\land\psi_{2}))$ es satisfacible.
+\end{itemize}
+\end{block}
+
+Estamos recortando un monton de ramas del algoritmo de Tableau !!. (Otra propiedad muy importante que enuncia el paper)
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Propiedas sobre los modelos de razonamiento}
+
+A partir de la proposici\'on 1, podemos dar propiedades sobre cada $\epsilon_{i}$, y obtener el algoritmo de manera similar a como lo hicimos reci\'en. Veamos algunos ejemplos:
+
 \begin{block}{Proposici\'on 2}
 Una f\'ormula $\phi$ es $\epsilon_{2}$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que: 
 \begin{itemize}
-\item Si $\Box\psi \in sub(\phi)$ y  $sv(\Box \psi) = 0 \implies \neg \psi$ es $\epsilon_{2}-$satisfacible, y 
+\item Si $\Box\psi \in sub(\phi)$ y  $v(\Box \psi) = 0 \implies \neg \psi$ es $\epsilon_{2}-$satisfacible, y 
 \item $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box \psi_{2}) = 0 \implies (\psi_{1} \land \psi_{2}) \lor (\neg \psi_{1} \land \psi_{2})$ es $\epsilon_{2}$-satisfacible
 \end{itemize}
 \end{block}
+
+\begin{block}{Proposici\'on 3}
+Una f\'ormula $\phi$ es $\epsilon_{3}$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que: 
+\begin{itemize}
+\item $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box \psi_{2}) = 0 \implies (\psi_{1} \land \neg\psi_{2})$ es $\epsilon_{3}$-satisfacible
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Un momento...}
+
+Antes hab\'ia mencionado que si el agente pod\'ia razonar:
+Si $U \in N(a,w)$ y $V \in N(a,w) \implies (U \cap V) \in N(a,w)$ (poder inferir conocimiento), el problema de SAT se volv\'ia PSPACE.
+¿Por qu\'e pasa esto?
+
+\begin{block}{Lema}
+Sea $M = (W,N,I) \in \epsilon_{4}$, sea $\phi$ una f\'ormula y $w \in W$. Entonces $M \nvDash_{w}\Box\phi \iff \cap_{j = 1}^{k} U_{j} \neg I(\phi)$ para todo subconjunto no vac\'io ${U_{1},...,U_{k}} \subseteq N(a,w)$  
+\end{block}
+
+Y entonces la propiedad que caracteriza a $\epsilon_{4}$ es la siguiente:
+
+\begin{block}{Proposici\'on 4}
+Una f\'ormula $\phi$ es $\epsilon_{4}$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que: 
+\begin{itemize}
+\item $\Box\psi_{1}, ..., \Box\psi_{k} \in sub(\phi), v(\Box \psi_{j}) = 1$ $\forall 1 \leq j \le k \land v(\Box\psi_{k}) = 0$ $\implies \land_{j = 1}^{k-1} \psi_{j} \land \neg\psi_{k}$ es $\epsilon_{4}$-satisfacible \'o $\neg\psi_{j}\land\psi_{k}$ es $\epsilon_{4}$-satisfacible para alg\'un j, $1 \leq j \le k$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{El problema - Parte 2}
+
+\subsection{Redefiniendo la sem\'antica}
+\begin{frame}
+\frametitle{Repasando lo que tenemos}
+
+En toda est\'a primera parte, al igual que en la materia, decimos que:
+
+\begin{block}{Definici\'on}
+ Sea M un modelo epist\'emico, $w \in W$, $M\models_{w} \Box\phi \iff \{v / v\models \phi\} \in N(a,w)$. 
+\end{block}
+Vamos a decir lo mismo de otra forma:
+
+\begin{block}{Reescribiendo la definici\'on}
+ Sea M un modelo epist\'emico, $w \in W$, $M\models_{w} \Box\phi \iff \{v / v\models \phi\} \in N(a,w)=\{X_{1}, ...,X_{n}\} \iff \exists Y \in N(a,w) / Y = \{v / v\models \phi\} \iff \exists Y \in N(a,w) / Y = ||\phi||_{M}$
+\end{block}
+
+Esto puede leerse como : Un agente a cree una f\'ormula $\phi$, desde un estado o mundo w $\iff$ el conjunto de TODOS los mundos en donde $\phi$ es cierta pertenece a N(a,w)... No ser\'a mucho pedir todos?
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Nuevo enfoque}
+
+Cambio la notaci\'on por una cuesti\'on de practicidad. Vamos a representar al operador modal que conocemos, el $\Box$ como $[]$, y vamos a definir una nueva sem\'antica.
+
+\begin{block}{Sem\'antica fuerte}
+Vamos a decir que $||[=]\phi||_{M} = \{w | \exists X \in N(a,w)$ tal que $X = ||\phi||_{M}\}$
+\end{block}
+
+
+\begin{block}{Sem\'antica debil}
+Vamos a decir que $||[\subseteq]\phi||_{M} = \{w | \exists X \in N(a,w)$ tal que $X \subseteq ||\phi||_{M}\}$
+\end{block}
+
+Estas sem\'anticas son conocidas hoy en d\'ia para la l\'ogica epist\'emica, e incluso ambas poseen una noci\'on de bisimulaci\'on. El objetivo del segundo paper, "Which Semantics for Neighbourhood Semantics?", tratar\'a el problema de definir un nuevo concepto de bisimulaci\'on para la primera sem\'antica, y mostrar\'a la complejidad computacional usando fuertemente las propiedades vistas del primer paper. 
+\end{frame}
+
+\subsection{Bisimulaci\'on en la sem\'antica de Neighbourhood}
+
+\begin{frame}
+\frametitle{Definiendo bisimulaci\'on}
+
+
 
 \end{frame}
 
