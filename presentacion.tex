@@ -79,6 +79,7 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{listings}
+\usepackage{amsmath}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -377,7 +378,7 @@ Vamos a decir que $||[=]\phi||_{M} = \{w | \exists X \in N(a,w)$ tal que $X = ||
 Vamos a decir que $||[\subseteq]\phi||_{M} = \{w | \exists X \in N(a,w)$ tal que $X \subseteq ||\phi||_{M}\}$
 \end{block}
 
-Estas sem\'anticas son conocidas hoy en d\'ia para la l\'ogica epist\'emica, e incluso ambas poseen una noci\'on de bisimulaci\'on. El objetivo del segundo paper, "Which Semantics for Neighbourhood Semantics?", tratar\'a el problema de definir un nuevo concepto de bisimulaci\'on para la primera sem\'antica, y mostrar\'a la complejidad computacional usando fuertemente las propiedades vistas del primer paper. 
+Estas sem\'anticas son conocidas hoy en d\'ia para la l\'ogica epist\'emica, e incluso ambas poseen una noci\'on de bisimulaci\'on. El objetivo del segundo paper, "Which Semantics for Neighbourhood Semantics?", tratar\'a el problema de definir un nuevo concepto de bisimulaci\'on para la primer sem\'antica, y mostrar\'a la complejidad computacional usando fuertemente las propiedades vistas del primer paper. 
 \end{frame}
 
 \subsection{Bisimulaci\'on en la sem\'antica de Neighbourhood}
@@ -385,11 +386,130 @@ Estas sem\'anticas son conocidas hoy en d\'ia para la l\'ogica epist\'emica, e i
 \begin{frame}
 \frametitle{Definiendo bisimulaci\'on}
 
+\begin{block}{$N_{\subseteq}$-bisimulaci\'on}
+Sean M y $M^{'}$ dos modelos epist\'emicos. Una $N_{\subseteq}$-bisimulaci\'on entre M y $M^{'}$ es una relaci\'on no vac\'ia $Z \subseteq$ $WxW^{'}$ tal que si $xZx^{'}$ entonces:
+\begin{itemize}
+\item Prop: $\forall p \in PROP$, $x \in ||p|||_{M} \iff x^{'} \in ||p||_{M^{'}}$
+\item Zig: $\forall T \in N_{x}$, $\exists T^{'} \in N^{'}_{x} tal que \forall w^{'} \in T^{'} \exists w \in T$ tal que $wZw^{'}$
+\item Zag: $\forall T^{'} \in N^{'}_{x}$, $\exists T \in N_{x} tal que \forall w \in T \exists w^{'} \in T^{'}$ tal que $wZw^{'}$
+\end{itemize}
+\end{block}
 
+Es muy parecida a la noci\'on de bisimulaci\'on que vimos en la materia. Veamos ahora como definimos la noci\'on de bisimulaci\'on para la otra sem\'antica.
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Definiendo bisimulaci\'on}
+
+\begin{block}{$N_{=}$-bisimulaci\'on}
+Sean M y $M^{'}$ dos modelos epist\'emicos. Una $N_{\subseteq}$-bisimulaci\'on entre M y $M^{'}$ es una relaci\'on no vac\'ia $Z \subseteq$ $WxW^{'}$ tal que si $xZx^{'}$ entonces:
+\begin{itemize}
+\item Prop: $\forall p \in PROP$, $x \in ||p|||_{M} \iff x^{'} \in ||p||_{M^{'}}$
+\item Zig: $\forall T \in N_{x}$, $\exists T^{'} \in N^{'}_{x}$ tal que 
+\begin{itemize}
+\item $\forall w^{'} \in T^{'} \exists w \in T$ tal que $wZw^{'}$
+\item $\forall w^{'} \in W^{'}\backslash T^{'} \exists w \in W\backslash T$ tal que $wZw^{'}$
+\end{itemize}
+\item Zig: $\forall T^{'} \in N_{x}^{'}$, $\exists T \in N_{x}$ tal que 
+\begin{itemize}
+\item $\forall w \in T$ $\exists w^{'} \in T^{'}$ tal que $wZw^{'}$
+\item $\forall w \in W\backslash T$ $\exists w^{'} \in W^{'}\backslash T^{'}$ tal que $wZw^{'}$
+\end{itemize}  
+\end{itemize}
+\end{block}
+
+El problema con est\'a definici\'on es que es muy fuerte. La bisimulaci\'on preserva satisfacibilidad de las f\'ormulas de $N_{=}$, pero l\'imita el poder de expresividad de $N_{=}$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Redefiniendo $N_{=}$-bisimulaci\'on}
+
+\begin{block}{Definici\'on de diferenciaci\'on}
+Se define la clase de modelos epist\'emicos diferenciales D como 
+D = $\{M | \forall w \in W$ $\forall T \in N_{w}$ $\exists \phi$ tal que $||\phi^{M}|| = T\}$
+\end{block}
+Lo importante es notar que para cada conjunto de mundos en la vecindad, existe una f\'ormula que caracteriza a dicho conjunto.
+
+A partir de est\'a definici\'on, podemos volver a definir el concepto de $N_{=}$-bisimulaci\'on como sigue
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Redefiniendo $N_{=}$-bisimulaci\'on}
+
+\begin{block}{$N_{=}$-bisimulaci\'on}
+Sean M y $M^{'}$ dos modelos epist\'emicos. Una $N_{\subseteq}$-bisimulaci\'on entre M y $M^{'}$ es una relaci\'on no vac\'ia $Z \subseteq$ $WxW^{'}$ tal que si $xZx^{'}$ entonces:
+\begin{itemize}
+\item Prop: $\forall p \in PROP$, $x \in ||p|||_{M} \iff x^{'} \in ||p||_{M^{'}}$
+\item Zig: $\forall T \in N_{x}$, $\exists T^{'} \in N^{'}_{x}$ tal que 
+\begin{itemize}
+\item $\forall w^{'} \in T^{'} \exists w \in T$ tal que $wZw^{'}$
+\item $\forall X^{'} \notin N^{'}_{w^{'}}$ diferenciable en $M^{'}$ tal que $T^{'} \subset X^{'} \subseteq W^{'}$, existen $w^{'} \in X^{'} \backslash T^{'}$, $w \in W\backslash T$ tal que $wZw^{'}$
+\end{itemize}
+\item Zig: $\forall T^{'} \in N_{x}^{'}$, $\exists T \in N_{x}$ tal que 
+\begin{itemize}
+\item $\forall w \in T$ $\exists w^{'} \in T^{'}$ tal que $wZw^{'}$
+\item $\forall X \notin N_{w}$ diferenciable en $M$ tal que $T \subset X \subseteq W$, existen $w \in X \backslash T$, $w^{'} \in W^{'}\backslash T^{'}$ tal que $wZw^{'}$
+\end{itemize}  
+\end{itemize}
+\end{block}
+
+Por que pasa que la definici\'on se vuelve tan complicada ?.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Extendiendo a $N_{=}$}
+
+El aporte importante que hace el paper, es resolver a la pregunta anterior. Definimos al operador $\bigtriangledown$ como sigue:
+
+\begin{block}{Definici\'on nuevo operador $\bigtriangledown$}
+$||\phi \bigtriangledown \psi||^{M} = \{w | \exists X_{1}, X_{2} \in N_{w}$ tal que $X_{1} \neq X_{2} \land X_{1} = ||\phi||_{M} \land X_{2} = ||\phi \lor \psi||_{M}\}$
+\end{block}
+
+Con este operador, podemos probar que que la l\'ogica $N_{=}(\bigtriangledown)$ (es la l\'ogica que obtenemos al extender $N_{=}$ con el operador $\bigtriangledown$), matchea el poder expresivo de las $N_{=}$-bisimulaciones.
+
+El problema con este nuevo operador, es que es alto galerazo. No habr\'a algo m\'as natural?
+\end{frame}
+
+\begin{frame}
+\frametitle{El operador modal de existencia}
+
+Definimos al operador modal de existencia, E como sigue:
+
+\begin{block}{Definici\'on operador modal de existencia}
+\[ ||E\phi|| = \begin{cases} 
+      W & si ||\phi||_{M} \neq \emptyset \\
+      \emptyset & sino
+   \end{cases}
+\]
+\end{block}
+
+Se puede probar que vale la siguiente igualdad
+$||\phi \bigtriangledown \psi||^{M} = ||[=]\phi \land [=](\phi \lor \psi) \land E(\psi \land \neg \phi)||^{M}$
+
+Por lo que a partir de esto, podemos inferir que la extensi\'on $N_{=}(E)$ matchea el poder expresivo de las $N_{=}$-bisimulaciones.
+
+Surge la siguiente pregunta... Habremos modificado la complejidad computacional, al haber extendido de est\'a manera la bisimulaci\'on?
+\end{frame}
 %------------------------------------------------
+
+\subsection{Estudiando la complejidad computacional}
+
+\begin{frame}
+\frametitle {Satisfacibilidad de las sem\'anticas definidas}
+
+\begin{block}{Proposici\'on}
+$\forall \phi$ y $\forall$ M modelo epist\'emico, $||\phi||_{\subseteq}^{M} = ||\phi||_{=}^{M^{+}}$ 
+\end{block}
+
+\begin{block}{Proposici\'on}
+El problema de satisfacibilidad de $N_{\subseteq}$ es NP
+\end{block}
+
+\end{frame}
 
 \begin{frame}
 \Huge{\centerline{Preguntas??}}

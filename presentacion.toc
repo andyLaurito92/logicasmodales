@@ -9,3 +9,4 @@
 \beamer@sectionintoc {3}{El problema - Parte 2}{18}{0}{3}
 \beamer@subsectionintoc {3}{1}{Redefiniendo la sem\'antica}{18}{0}{3}
 \beamer@subsectionintoc {3}{2}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{20}{0}{3}
+\beamer@subsectionintoc {3}{3}{Estudiando la complejidad computacional}{26}{0}{3}

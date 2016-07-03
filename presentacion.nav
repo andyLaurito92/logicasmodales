@@ -57,8 +57,21 @@
 \headcommand {\beamer@framepages {20}{20}}
 \headcommand {\slideentry {3}{2}{2}{21/21}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\beamer@partpages {1}{21}}
-\headcommand {\beamer@subsectionpages {20}{21}}
-\headcommand {\beamer@sectionpages {18}{21}}
-\headcommand {\beamer@documentpages {21}}
-\headcommand {\def \inserttotalframenumber {21}}
+\headcommand {\slideentry {3}{2}{3}{22/22}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {3}{2}{4}{23/23}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {3}{2}{5}{24/24}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {3}{2}{6}{25/25}{Bisimulaci\'on en la sem\'antica de Neighbourhood}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{26}{Estudiando la complejidad computacional}}\headcommand {\beamer@subsectionpages {20}{25}}
+\headcommand {\slideentry {3}{3}{1}{26/26}{Estudiando la complejidad computacional}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {3}{3}{2}{27/27}{Estudiando la complejidad computacional}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@partpages {1}{27}}
+\headcommand {\beamer@subsectionpages {26}{27}}
+\headcommand {\beamer@sectionpages {18}{27}}
+\headcommand {\beamer@documentpages {27}}
+\headcommand {\def \inserttotalframenumber {27}}
