@@ -405,7 +405,7 @@ Es muy parecida a la noci\'on de bisimulaci\'on que vimos en la materia. Veamos 
 \frametitle{Definiendo bisimulaci\'on}
 
 \begin{block}{$N_{=}$-bisimulaci\'on}
-Sean M y $M^{'}$ dos modelos epist\'emicos. Una $N_{\subseteq}$-bisimulaci\'on entre M y $M^{'}$ es una relaci\'on no vac\'ia $Z \subseteq$ $WxW^{'}$ tal que si $xZx^{'}$ entonces:
+Sean M y $M^{'}$ dos modelos epist\'emicos. Una $N_{=}$-bisimulaci\'on entre M y $M^{'}$ es una relaci\'on no vac\'ia $Z \subseteq$ $WxW^{'}$ tal que si $xZx^{'}$ entonces:
 \begin{itemize}
 \item Prop: $\forall p \in PROP$, $x \in ||p|||_{M} \iff x^{'} \in ||p||_{M^{'}}$
 \item Zig: $\forall T \in N_{x}$, $\exists T^{'} \in N^{'}_{x}$ tal que 
@@ -505,6 +505,10 @@ Surge la siguiente pregunta... Habremos modificado la complejidad computacional,
 
 \begin{block}{Proposici\'on}
 $\forall \phi$ y $\forall$ M modelo epist\'emico, $||\phi||_{\subseteq}^{M} = ||\phi||_{=}^{M^{+}}$ 
+\end{block}
+
+\begin{block}{Corolario}
+Sea S la clase de modelos suplementados. $\forall \phi \in N_{\subseteq}$ y todo modelo epist\'emico $M \in S$: $M \models_{\subseteq}\phi \iff M \models_{=}\phi$
 \end{block}
 
 Usando esto y lo visto en la primera parte, podemos probar entonces que
