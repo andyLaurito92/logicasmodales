@@ -247,7 +247,7 @@ Nos vamos a permitir vivir con este problema
 A partir de est\'a definici\'on, si llamamos $\epsilon$ a la clase de todos los modelos epist\'emicos, entonces podemos decir:
 
 \begin{block}{Definici\'on}
-Sea S un subconjunto de {1,...,7}, entonces $\epsilon_{S}$ ser\'a la clase de los modelos epist\'emicos que satisfaga $C_{j}$ $\forall j \in S$
+Sea S un subconjunto de $\{1,...,7\}$, entonces $\epsilon_{S}$ ser\'a la clase de los modelos epist\'emicos que satisfaga $C_{j}$ $\forall j \in S$
 \end{block} 
 \end{frame}
 
@@ -287,7 +287,7 @@ Veamos la propiedad enunciada m\'as importante del paper:
 \frametitle{SAT de una f\'ormula}
 
 \begin{block}{Proposici\'on 1}
-Una f\'ormula $\phi$ es $\epsilon$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que si $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box \psi_{2}) = 0 \implies (\psi_{1} \land \psi_{2}) \lor (\neg \psi_{1} \land \psi_{2})$ es $\epsilon$-satisfacible
+Una f\'ormula $\phi$ es $\epsilon$-satisfacible $iff \exists$ v valuaci\'on para $\phi$ tal que si $\Box\psi_{1}$ y $\Box \psi_{2} \in sub(\phi), v(\Box \psi_{1}) = 1$, y $v(\Box\psi_{2}) = 0 \implies (\psi_{1} \land \psi_{2}) \lor (\neg \psi_{1} \land \psi_{2})$ es $\epsilon$-satisfacible
 \end{block}
 
 A partir de est\'a propiedad, podemos inferir el siguiente algoritmo:
@@ -295,7 +295,7 @@ A partir de est\'a propiedad, podemos inferir el siguiente algoritmo:
 \begin{block}{Algoritmo SAT para $\epsilon$}
 \begin{itemize}
 	\item De manera no determinist\'isca adivinar una valuaci\'on v para $\phi$
-	\item $\forall \Box\psi_{1} \land \Box\psi_{2} \in sub(\phi)$ / $v(\Box\psi_{1}) = 1 \land \Box\psi_{2} = 0$ no determin\'isticamente y de manera recursiva, verificar que $(\psi_{1} \land \neg\psi_{2} \lor (\neg\psi_{1}\land\psi_{2}))$ es satisfacible.
+	\item $\forall \Box\psi_{1} \land \Box\psi_{2} \in sub(\phi)$ / $v(\Box\psi_{1}) = 1 \land v(\Box\psi_{2}) = 0$ no determin\'isticamente y de manera recursiva, verificar que $(\psi_{1} \land \neg\psi_{2})$ \'o $(\neg\psi_{1}\land\psi_{2})$ es satisfacible.
 \end{itemize}
 \end{block}
 
@@ -332,7 +332,7 @@ Si $U \in N(a,w)$ y $V \in N(a,w) \implies (U \cap V) \in N(a,w)$ (poder inferir
 ¿Por qu\'e pasa esto?
 
 \begin{block}{Lema}
-Sea $M = (W,N,I) \in \epsilon_{4}$, sea $\phi$ una f\'ormula y $w \in W$. Entonces $M \nvDash_{w}\Box\phi \iff \cap_{j = 1}^{k} U_{j} \neg I(\phi)$ para todo subconjunto no vac\'io ${U_{1},...,U_{k}} \subseteq N(a,w)$  
+Sea $M = (W,N,I) \in \epsilon_{4}$, sea $\phi$ una f\'ormula y $w \in W$. Entonces $M \nvDash_{w}\Box\phi \iff \cap_{j = 1}^{k} U_{j} \neq I(\phi)$ para todo subconjunto no vac\'io ${U_{1},...,U_{k}} \subseteq N(a,w)$  
 \end{block}
 
 Y entonces la propiedad que caracteriza a $\epsilon_{4}$ es la siguiente:
